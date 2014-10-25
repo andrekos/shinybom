@@ -1,10 +1,4 @@
-library(googleVis)
-library(data.table)
-
-load("C:/COURSERA/DevelopingDataProducts/test_shiny/bom/BOMDAILYTEMP.RData")
-
 shinyServer(function(input, output) {
-
 datasetInput <- reactive({
         setkey(BOMDAILYTEMP,Site,Year,Month)
         a <- BOMDAILYTEMP[J(as.integer(input$Site),input$Year,input$Month)]

@@ -20,7 +20,7 @@ radioButtons("Site", "Select Site:",
                htmlOutput("table")),
                
       tabPanel("Documentation",h4("Documenting the app for temperature observations"),
-        includeMarkdown('README.md')
+        includeMarkdown('docs.md')
       )
     )
   )
