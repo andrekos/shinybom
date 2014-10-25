@@ -1,9 +1,7 @@
-
-
 ### Using the app
 
 This simple application was created in [R](href="http://www.r-project.org) with the
-[Shiny](http://www.rstudio.com/shiny) framework. The app tests the Shiny framework for building interactive web application from within RStudio, using temperature related data from several Australian Bureau of Meteorology (BOM ) weather stations. A script was written to automatically extract / update the data from the BOM website, and to provide an example of visualising these data using Shiny is the purpose of this application. This app was released as a proof of concept only, meaning that the layout, content and functionality of the app will change as more time has been invested in its creation.   
+[Shiny](http://www.rstudio.com/shiny) framework. The app tests the Shiny framework for building interactive web application from within RStudio, using temperature related data from several Australian Bureau of Meteorology (BOM) weather stations. A script was written to automatically extract / update the data from the BOM website, and to provide an example of visualising these data using Shiny is the purpose of this application. This app was released as a proof of concept only, meaning that the layout, content and functionality of the app will change as more time has been invested in its creation.   
 
 ### Explaining variables
 
