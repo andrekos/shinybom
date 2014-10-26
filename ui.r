@@ -1,5 +1,8 @@
+
+require(markdown)
+
 shinyUI(pageWithSidebar(
-  headerPanel("BOM temperature explore",windowTitle="BOM temperature explore"),
+  headerPanel("BOM temperature explorer",windowTitle="BOM temperature explorer"),
   sidebarPanel(
     tags$head(tags$style(type='text/css', "#selected{ display: none; }")),
 
