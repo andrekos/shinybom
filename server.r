@@ -50,7 +50,7 @@ datasetInput2 <- reactive({
     if (is.null(input$selected))
        return(NULL)
     
-    boxplot(datasetInput2()[,-c(1,2),with=FALSE],col = "bisque")
+    boxplot(datasetInput2()[,-c(1,2),with=FALSE],col = "bisque", ylab ="Degrees C")
     title(paste0("Boxplot of ",month.name[input$Month]," observations (since ",
                 datasetInput2()$Year[1],")"))
   })
