@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>BOM temperature explorer</title>
+  <meta charset="utf-8">
+  <meta name="description" content="BOM temperature explorer">
+  <meta name="author" content="by andrekos, October 2014">
+  <meta name="generator" content="slidify" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/default.css" media="all" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/phone.css" 
+    media="only screen and (max-device-width: 480px)" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/slidify.css" >
+  <link rel="stylesheet" href="libraries/highlighters/highlight.js/css/tomorrow.css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  <link rel=stylesheet href="libraries/widgets/bootstrap/css/bootstrap.css"></link>
+<link rel=stylesheet href="libraries/widgets/quiz/css/demo.css"></link>
+<link rel=stylesheet href="./assets/css/ribbons.css"></link>
+
+  
+  <!-- Grab CDN jQuery, fall back to local if offline -->
+  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
+  <script>window.jQuery || document.write('<script src="libraries/widgets/quiz/js/jquery.js"><\/script>')</script> 
+  <script data-main="libraries/frameworks/io2012/js/slides" 
+    src="libraries/frameworks/io2012/js/require-1.0.8.min.js">
+  </script>
+  
+  
+
+</head>
+<body style="opacity: 0">
+  <slides class="layout-widescreen">
+    
+    <!-- LOGO SLIDE -->
+        <slide class="title-slide segue nobackground">
+  <aside class="gdbar">
+    <img src="assets/img/logo.png">
+  </aside>
+  <hgroup class="auto-fadein">
+    <h1>BOM temperature explorer</h1>
+    <h2>a simple Shiny app pitch</h2>
+    <p>by andrekos, October 2014<br/></p>
+  </hgroup>
+    <a href="https://github.com/andrekos/shinybom/zipball/gh-pages" class="example">
+     Download
+    </a>
+  <article></article>  
+  <footer class = 'license'>
+    <a href='http://creativecommons.org/licenses/by-nc-sa/3.0/'>
+    <img width = '80px' src = 'http://mirrors.creativecommons.org/presskit/buttons/88x31/png/by-nc-sa.png'>
+    </a>
+  </footer>
+</slide>
+    
+
+    <!-- SLIDES -->
+    <slide class="" id="slide-1" style="background:;">
+  <hgroup>
+    <h2>The need for the app</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li><p>As temperature variability is an important driver in many statistical analyses, it should be convenient to have an easy-to-access webpage with the graphical and tabular summaries of the useful data and statistics. Many of those are available from dedicated websites, like the Australian Bureau of Meteorology <a href="http://www.bom.gov.au/">website</a>, but there is no guarantee they will always have exactly what you may need next. </p></li>
+<li><p>One thing they will always have is the raw data they collect to share. The number and complexity of the useful analyses that a team of skilful quantitative analysts can produce is only limited by their available time and imagination. The latest browser supported technologies (HTML5 &amp; CSS3), the latest trends in statistical computing (R &amp; RStudio) and the free websites for individuals&#39; data product projects (github.io &amp; shinyapps.io) all suggest that modern data analyses should be interactive, dynamic and reproducible.   </p></li>
+<li><p>To address this need, and as a proof of concept, a Shiny app was developed and deployed at <a href="https://andrekos.shinyapps.io/shinybom">shinyapps</a>. This <a href="http://slidify.org/">Slidify</a> presentation, written to pitch the app to those interested, is available from <a href="https://andrekos.github.io/shinybom">github.io</a>. The source code for the app and slides is at <a href="https://github.com/andrekos/shinybom">github.com</a>.</p></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Goodbye static graphs from base, lattice and ggplot!</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>Those golden standards of analytic graphics shine no more<br></li>
+</ul>
+
+<p><img src="assets/fig/unnamed-chunk-3-1.png" alt="plot of chunk unnamed-chunk-3"> </p>
+
+<ul>
+<li>You can&#39;t see what years the outliers belong to? Boring. If you want this for another station, your analyst would need to modify the code, re-run it and get back to you. Inefficient.</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-3" style="background:;">
+  <hgroup>
+    <h2>Hello nice stuff with shiny, ggvis and rmarkdown!</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>googleVis, ggvis and friends bring interactive plots to R</li>
+</ul>
+
+<!-- ScatterChart generated in R 3.1.1 by googleVis 0.5.6 package -->
+
+<!-- Sun Oct 26 18:53:53 2014 -->
+
+<!-- jsHeader -->
+
+<script type="text/javascript">
+ 
+// jsData 
+function gvisDataScatterChartID2024b8f1606 () {
+var data = new google.visualization.DataTable();
+var datajson =
+[
+ [
+ 1,
+26.8,
+12.8,
+19.8,
+0,
+1.8 
+],
+[
+ 2,
+25.8,
+9.6,
+17.7,
+0.3,
+0 
+],
+[
+ 3,
+28.1,
+13.8,
+20.95,
+0,
+2.95 
+],
+[
+ 4,
+28.6,
+13,
+20.8,
+0,
+2.8 
+],
+[
+ 5,
+32.5,
+15.9,
+24.2,
+0,
+6.2 
+],
+[
+ 6,
+39,
+16.4,
+27.7,
+0,
+9.7 
+],
+[
+ 7,
+27,
+16.9,
+21.95,
+0,
+3.95 
+],
+[
+ 8,
+29.7,
+15.7,
+22.7,
+0,
+4.7 
+],
+[
+ 9,
+30.1,
+15.6,
+22.85,
+0,
+4.85 
+],
+[
+ 10,
+35.7,
+16.4,
+26.05,
+0,
+8.05 
+],
+[
+ 11,
+43.5,
+20.6,
+32.05,
+0,
+14.05 
+],
+[
+ 12,
+43,
+28.5,
+35.75,
+0,
+17.75 
+],
+[
+ 13,
+28.6,
+20.7,
+24.65,
+0,
+6.65 
+],
+[
+ 14,
+27.8,
+14.5,
+21.15,
+0,
+3.15 
+],
+[
+ 15,
+26.2,
+14.5,
+20.35,
+0,
+2.35 
+],
+[
+ 16,
+25.9,
+18.1,
+22,
+0,
+4 
+],
+[
+ 17,
+32.6,
+15.6,
+24.1,
+0,
+6.1 
+],
+[
+ 18,
+38.2,
+14.1,
+26.15,
+0,
+8.15 
+],
+[
+ 19,
+40,
+19,
+29.5,
+0,
+11.5 
+],
+[
+ 20,
+38.7,
+20.6,
+29.65,
+0,
+11.65 
+],
+[
+ 21,
+37.9,
+19.6,
+28.75,
+0,
+10.75 
+],
+[
+ 22,
+37.1,
+23.4,
+30.25,
+0,
+12.25 
+],
+[
+ 23,
+37.2,
+22.6,
+29.9,
+0,
+11.9 
+],
+[
+ 24,
+32.7,
+23.2,
+27.95,
+0,
+9.95 
+],
+[
+ 25,
+37.2,
+24.5,
+30.85,
+0,
+12.85 
+],
+[
+ 26,
+32.3,
+22.5,
+27.4,
+0,
+9.4 
+],
+[
+ 27,
+26.9,
+15.5,
+21.2,
+0,
+3.2 
+],
+[
+ 28,
+31.6,
+15.5,
+23.55,
+0,
+5.55 
+],
+[
+ 29,
+34.2,
+16.6,
+25.4,
+0,
+7.4 
+],
+[
+ 30,
+35.5,
+17.4,
+26.45,
+0,
+8.45 
+],
+[
+ 31,
+30.3,
+20,
+25.15,
+0,
+7.15 
+] 
+];
+data.addColumn('number','Day');
+data.addColumn('number','MAXT');
+data.addColumn('number','MINT');
+data.addColumn('number','MIDT');
+data.addColumn('number','HDD');
+data.addColumn('number','CDD');
+data.addRows(datajson);
+return(data);
+}
+ 
+// jsDrawChart
+function drawChartScatterChartID2024b8f1606() {
+var data = gvisDataScatterChartID2024b8f1606();
+var options = {};
+options["allowHtml"] = true;
+options["title"] = "Daily records at BOM weather site 9021 in January 2014";
+options["titleTextStyle"] = {color:'green',
+                              fontName:'Courier',
+                              fontSize:15};
+options["curveType"] = "function";
+options["pointSize"] =      0;
+options["lineWidth"] =      2;
+options["hAxis"] = {
+ "viewWindowMode": "explicit",
+"viewWindow": {
+ "max":     32,
+"min":      0 
+},
+"title": "day of the month" 
+};
+options["vAxis"] = {
+ "viewWindowMode": "explicit",
+"viewWindow": {
+ "max":     50,
+"min":      0 
+},
+"title": "degree Celsius" 
+};
+options["width"] =    750;
+options["height"] =    300;
+
+    var chart = new google.visualization.ScatterChart(
+    document.getElementById('ScatterChartID2024b8f1606')
+    );
+    chart.draw(data,options);
+    
+
+}
+  
+ 
+// jsDisplayChart
+(function() {
+var pkgs = window.__gvisPackages = window.__gvisPackages || [];
+var callbacks = window.__gvisCallbacks = window.__gvisCallbacks || [];
+var chartid = "corechart";
+  
+// Manually see if chartid is in pkgs (not all browsers support Array.indexOf)
+var i, newPackage = true;
+for (i = 0; newPackage && i < pkgs.length; i++) {
+if (pkgs[i] === chartid)
+newPackage = false;
+}
+if (newPackage)
+  pkgs.push(chartid);
+  
+// Add the drawChart function to the global list of callbacks
+callbacks.push(drawChartScatterChartID2024b8f1606);
+})();
+function displayChartScatterChartID2024b8f1606() {
+  var pkgs = window.__gvisPackages = window.__gvisPackages || [];
+  var callbacks = window.__gvisCallbacks = window.__gvisCallbacks || [];
+  window.clearTimeout(window.__gvisLoad);
+  // The timeout is set to 100 because otherwise the container div we are
+  // targeting might not be part of the document yet
+  window.__gvisLoad = setTimeout(function() {
+  var pkgCount = pkgs.length;
+  google.load("visualization", "1", { packages:pkgs, callback: function() {
+  if (pkgCount != pkgs.length) {
+  // Race condition where another setTimeout call snuck in after us; if
+  // that call added a package, we must not shift its callback
+  return;
+}
+while (callbacks.length > 0)
+callbacks.shift()();
+} });
+}, 100);
+}
+ 
+// jsFooter
+</script>
+ 
+
+<!-- jsChart -->  
+
+<script type="text/javascript" src="https://www.google.com/jsapi?callback=displayChartScatterChartID2024b8f1606"></script>
+ 
+
+<!-- divChart -->
+
+<div id="ScatterChartID2024b8f1606" 
+  style="width: 750; height: 300;">
+</div>
+
+<ul>
+<li>The Shiny app developed allows <em>you</em> to select the month of a year and the weather station. It will eventually allow <em>you</em> to do many more things without your analyst touching the code </li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-4" style="background:;">
+  <hgroup>
+    <h2>What is the next step in developing this Shiny app?</h2>
+  </hgroup>
+  <article data-timings="">
+    
+<div class="quiz quiz-single well ">
+  <p>I am sure you will be able to deductively conclude that the correct answer is ...</p>
+
+<ol>
+<li><p>Extending the app to include BOM weather data other than temperature </p></li>
+<li><p><em>Exploring the Shiny app building ecosystem further</em></p></li>
+<li><p>Extending the app by focusing on temperature related analytics</p></li>
+<li><p>Asking an expensive consultant what businesses want the most</p></li>
+<li><p>Creating an interactive version of the Tukey boxplot</p></li>
+<li><p>Asking around for a feedback on what has been done to date</p></li>
+</ol>
+
+  <button class="quiz-submit btn btn-primary">Submit</button>
+  <button class="quiz-toggle-hint btn btn-info">Show Hint</button>
+  <button class="quiz-show-answer btn btn-success">Show Answer</button>
+  <button class="quiz-clear btn btn-danger">Clear</button>
+  
+  <div class="quiz-hint">
+  <p>This app was a simple project completed in a very short time frame.  As one famous mathematician once mentioned, <a href="https://www.dartmouth.edu/%7Echance/Doob/conversation.html">&quot;Getting a Ph.D. in two years left me woefully ignorant of almost everything in mathematics not connected with my thesis work.&quot;</a></p>
+
+</div>
+<div class="quiz-explanation">
+  <p>That&#39;s right! I have had more than enough motivation to pause on the project and look around for what is possible and how to do it best. Indeed, as one famous poet once wrote, <a href="http://en.wikipedia.org/wiki/An_Essay_on_Criticism">&quot;A little learning is a dangerous thing&quot;</a>.</p>
+
+</div>
+</div>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+    <slide class="backdrop"></slide>
+  </slides>
+  <div class="pagination pagination-small" id='io2012-ptoc' style="display:none;">
+    <ul>
+      <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=1 title='The need for the app'>
+         1
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=2 title='Goodbye static graphs from base, lattice and ggplot!'>
+         2
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=3 title='Hello nice stuff with shiny, ggvis and rmarkdown!'>
+         3
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=4 title='What is the next step in developing this Shiny app?'>
+         4
+      </a>
+    </li>
+  </ul>
+  </div>  <!--[if IE]>
+    <script 
+      src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js">  
+    </script>
+    <script>CFInstall.check({mode: 'overlay'});</script>
+  <![endif]-->
+</body>
+  <!-- Load Javascripts for Widgets -->
+  <script src="libraries/widgets/bootstrap/js/bootstrap.min.js"></script>
+<script src="libraries/widgets/bootstrap/js/bootbox.min.js"></script>
+<script src="libraries/widgets/quiz/js/jquery.quiz.js"></script>
+<script src="libraries/widgets/quiz/js/mustache.min.js"></script>
+<script src="libraries/widgets/quiz/js/quiz-app.js"></script>
+
+  <script>  
+  $(function (){ 
+    $("#example").popover(); 
+    $("[rel='tooltip']").tooltip(); 
+  });  
+  </script>  
+  
+  <!-- LOAD HIGHLIGHTER JS FILES -->
+  <script src="libraries/highlighters/highlight.js/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <!-- DONE LOADING HIGHLIGHTER JS FILES -->
+   
+  </html>

@@ -1,0 +1,111 @@
+---
+title       : BOM temperature explorer
+subtitle    : a simple Shiny app pitch
+author      : by andrekos, October 2014
+framework   : io2012        # {io2012, html5slides, shower, dzslides, deck.js,landslide, Slidy ...}
+highlighter : highlight.js  # {highlight.js, prettify, highlight}
+hitheme     : tomorrow      # 
+widgets     : [bootstrap, quiz]            # {mathjax, quiz, bootstrap}
+mode        : selfcontained # {standalone, draft}
+knit        : slidify::knit2slides
+license     : by-nc-sa
+logo        : logo.png
+github      :
+  user      : andrekos
+  repo      : shinybom
+---
+
+## The need for the app
+
+```{r,echo=FALSE,message=FALSE}
+require(data.table)
+load("BOMDAILYTEMP.RData")
+require(googleVis)
+```
+
+
+
+* As temperature variability is an important driver in many statistical analyses, it should be convenient to have an easy-to-access webpage with the graphical and tabular summaries of the useful data and statistics. Many of those are available from dedicated websites, like the Australian Bureau of Meteorology [website](http://www.bom.gov.au/), but there is no guarantee they will always have exactly what you may need next. 
+
+* One thing they will always have is the raw data they collect to share. The number and complexity of the useful analyses that a team of skilful quantitative analysts can produce is only limited by their available time and imagination. The latest browser supported technologies (HTML5 & CSS3), the latest trends in statistical computing (R & RStudio) and the free websites for individuals' data product projects (github.io & shinyapps.io) all suggest that modern data analyses should be interactive, dynamic and reproducible.   
+
+* To address this need, and as a proof of concept, a Shiny app was developed and deployed at [shinyapps](https://andrekos.shinyapps.io/shinybom). This [Slidify](http://slidify.org/) presentation, written to pitch the app to those interested, is available from [github.io](https://andrekos.github.io/shinybom). The source code for the app and slides is at [github.com](https://github.com/andrekos/shinybom).
+
+--- .class #id 
+
+## Goodbye static graphs from base, lattice and ggplot!
+
+* Those golden standards of analytic graphics shine no more  
+
+```{r,echo=FALSE}
+        setkey(BOMDAILYTEMP,Site,Month)
+        a <- BOMDAILYTEMP[J(9021,1)]
+        a.wide<-dcast.data.table(a, Year+Day~Variable, value.var='Value')
+        dat<-a.wide[,-c(1,2),with=FALSE]
+```
+```{r,echo=FALSE, fig.width=6,fig.height=4.5}
+    boxplot(dat,col = "bisque",ylab ="Degrees C",xlab ="Temperature related variables")
+    title(paste0("Boxplot of ",month.name[1]," observations (since 1944)"))
+```
+
+* You can't see what years the outliers belong to? Boring. If you want this for another station, your analyst would need to modify the code, re-run it and get back to you. Inefficient.
+
+---
+
+## Hello nice stuff with shiny, ggvis and rmarkdown!
+
+* googleVis, ggvis and friends bring interactive plots to R
+
+```{r,echo=FALSE}
+        setkey(BOMDAILYTEMP,Site,Year,Month)
+        a <- BOMDAILYTEMP[J(9021,2014,1)]
+        a.wide<-dcast.data.table(a, Day~ Variable, value.var='Value')
+```
+
+```{r results = 'asis', commment = NA, message = F, echo = F}
+ p<-gvisScatterChart(a.wide,options=list(
+          title=paste("Daily records at BOM weather site",9021,
+                      "in",month.name[1],2014),
+          titleTextStyle="{color:'green',
+                              fontName:'Courier',
+                              fontSize:15}",
+          curveType='function', pointSize=0, lineWidth=2,
+          
+          hAxis = list(list(viewWindowMode = "explicit",
+                            viewWindow = list(max = 32, min = 0),title="day of the month")),
+          
+          vAxis = list(list(viewWindowMode = "explicit",
+                            viewWindow = list(max = 50, min = 0),title="degree Celsius")),
+          width=750, height=300
+     ))
+ 
+plot(p,tag="chart")
+```
+
+* The Shiny app developed allows _you_ to select the month of a year and the weather station. It will eventually allow _you_ to do many more things without your analyst touching the code 
+
+
+--- &radio
+
+## What is the next step in developing this Shiny app?
+
+I am sure you will be able to deductively conclude that the correct answer is ...
+
+1. Extending the app to include BOM weather data other than temperature 
+
+2. _Exploring the Shiny app building ecosystem further_
+
+3. Extending the app by focusing on temperature related analytics
+
+4. Asking an expensive consultant what businesses want the most
+
+5. Creating an interactive version of the Tukey boxplot
+
+6. Asking around for a feedback on what has been done to date
+
+*** .hint 
+This app was a simple project completed in a very short time frame.  As one famous mathematician once mentioned, ["Getting a Ph.D. in two years left me woefully ignorant of almost everything in mathematics not connected with my thesis work."](https://www.dartmouth.edu/~chance/Doob/conversation.html)
+
+
+*** .explanation 
+That's right! I have had more than enough motivation to pause on the project and look around for what is possible and how to do it best. Indeed, as one famous poet once wrote, ["A little learning is a dangerous thing"](http://en.wikipedia.org/wiki/An_Essay_on_Criticism).
